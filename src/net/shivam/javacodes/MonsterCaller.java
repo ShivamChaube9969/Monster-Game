@@ -1,5 +1,7 @@
 package net.shivam.javacodes;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 public class MonsterCaller {
 	public static void main(String[] args) {
 		Monster.buildBattleBoard();
@@ -10,6 +12,13 @@ public class MonsterCaller {
 		Monsters[2] = new Monster(1000, 20, 1, "Paul");
 		Monsters[3] = new Monster(1000, 20, 1, "George");
 		Monster.redrawBoard();
+		for (Monster m : Monsters)
+		{
+			if (m.getAlive()) {
+				int arrayItemIndex = ArrayUtils.indexOf(Monsters, m);
+				m.moveMonster(Monsters, arrayItemIndex);
+			}
+		}
+		Monster.redrawBoard();
 	}
-
 }
